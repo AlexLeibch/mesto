@@ -5,3 +5,10 @@
     display: flex;
     
 }
+
+
+@media (max-width: 880px) {
+    .profile {
+        flex-direction: column;
+    }
+}
