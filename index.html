@@ -1,14 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='./styles/index.css'>
     <title>Mesto</title>
 </head>
 <body>
     <div class="page">
-        <header class="header"></header>
+        <header class="header">
+            <img src="./vendor/image/header logo.svg" alt="лого шапки" class="header__logo">
+        </header>
+        <main class="content">
+            <section class="profile">
+                <img src="./vendor/image/profile__avatar.png" alt="аватар профиля" class="profile__avatar">
+                <div class="profile__info">
+                    <p class="profile__username">Жак-Ив Кусто</p>
+                    <button class="profile__edit-button">
+                        <img src="./vendor/image/profile__edit-img.svg" alt="кнопка изменения профиля" class="profile__edit-image">
+                    </button>
+                    <p class="profile__user-description">Исследователь океана</p>
+                </div>
+                <button class="profile__add-button">
+                    <img src="./vendor/image/profile__add-button.svg" alt="кнопка добавления карточки" class="profile__add-image">
+                </button>
+            </section>
+            <section class="elements">
+                <div class="element">
+                    <img src="./vendor/image/Charachaevsk.jpg" alt="Карачаевск" class="element__image">
+                    <div class="element__description">
+                        <h3 class="element__title"></h3>
+                        <button class="element__like-button">
+                            <img src="./vendor/image/heart.svg" alt="кнопка лайка" class="element__image-like-button">
+                        </button>
+                    </div>
+                </div>
+                <div class="element">
+                    <img src="./vendor/image/Charachaevsk.jpg" alt="Карачаевск" class="element__image">
+                    <div class="element__description">
+                        <h3 class="element__title"></h3>
+                        <button class="element__like-button">
+                            <img src="./vendor/image/heart.svg" alt="кнопка лайка" class="element__image-like-button">
+                        </button>
+                    </div>
+                </div>
+                <div class="element">
+                    <img src="./vendor/image/Charachaevsk.jpg" alt="Карачаевск" class="element__image">
+                    <div class="element__description">
+                        <h3 class="element__title"></h3>
+                        <button class="element__like-button">
+                            <img src="./vendor/image/heart.svg" alt="кнопка лайка" class="element__image-like-button">
+                        </button>
+                    </div>
+                </div>
+                <div class="element">
+                    <img src="./vendor/image/Charachaevsk.jpg" alt="Карачаевск" class="element__image">
+                    <div class="element__description">
+                        <h3 class="element__title"></h3>
+                        <button class="element__like-button">
+                            <img src="./vendor/image/heart.svg" alt="кнопка лайка" class="element__image-like-button">
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">© 2020 Mesto Russia</p>
+        </footer>
     </div>
     
 </body>

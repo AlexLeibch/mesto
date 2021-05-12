@@ -1,0 +1,8 @@
+.profile__user-description { 
+    color: white;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 16px 0 0;
+}
