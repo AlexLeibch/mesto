@@ -127,7 +127,7 @@
     .profile__add-button {
       margin-top: 36px;
       width: calc(100% - 38px);
-  
+      margin-left: 0;  
     }
   }
  
