@@ -1,11 +1,11 @@
- .page_root {
-     max-width: 880px;
-     min-width: 320px;
-     width: 100%;
-     min-height: 100vh;
-     display: flex;
-     flex-direction: column;
-     margin: 0 auto;
-
-
+.page_root {
+    font-family: 'Inter', 'Arial', sans-serif;
+    max-width: 880px;
+    min-width: 320px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    color: #fff;
  }
