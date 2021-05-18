@@ -58,7 +58,7 @@
     width: 24px;
     height: 24px;
     margin-left: 13px;
-    background: no-repeat 50% url(../vendor/image/editbutton.svg);
+    background: no-repeat 50% url(../vendor/image/profile__edit-img.svg);
     border: 0;
     padding: 0;
     background-size: 100%;
@@ -131,7 +131,122 @@
     }
   }
  
-  .profile__add-button:hover {
+.profile__add-button:hover {
     opacity: 0.6;
   }
   
+
+
+  
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0, 0.5);
+}
+
+.popup__container {
+    max-width: 430px;
+    position: fixed;
+    left: 425px;
+    top: 195px;
+    background: #fff;
+    height: 330px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 565px) {
+    .popup__container {
+        width: 282px;
+    }
+}
+
+.popup__input {
+    margin-left: 36px;
+    margin-top: 54px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+@media screen and (max-width: 565px) {
+    .popup__input {
+        margin-left: 22px;
+    }
+}
+
+.popup__button-close {
+    background: center no-repeat url(../vendor/image/closeButton.svg);
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    transition: opacity .5s ease-in;
+}
+
+.popup__button-close:hover {
+    opacity: 0.6;
+}
+
+.popup__title {
+    color: #000;
+    font-family: Inter;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 34px 0 0 36px;
+}
+
+@media screen and (max-width: 560px) {
+    .popup__title {
+        max-width: 238px;
+        font-size: 18px;
+        line-height: 22px;
+        margin-left: 22px;
+    }
+}
+
+.popup__field {
+    width: 358px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    margin-bottom: 30px;
+    padding-bottom: 13px;
+}
+
+.popup__field:last-of-type {
+    margin-bottom: 48px;
+}
+
+@media screen and (max-width: 565px) {
+    .popup__field {
+        width: 238px;
+    }
+}
+
+.popup__button-save {
+    width: 358px;
+    height: 50px;
+    background-color: black;
+    border: 0;
+    border-radius: 2px;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    transition: opacity 1s linear;
+    outline: none;
+}
