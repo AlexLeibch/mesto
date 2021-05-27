@@ -1,13 +1,15 @@
 .element__like-button {
     background: url(../../../vendor/image/heart.svg) center no-repeat;
-    width: 25px;
+    width: 22px;
     height: 19px;
-    border: none;
-    cursor: pointer;
+    border: 0;
+    padding: 0;
+    align-self: center;
+    background-size: 100%;
     margin-right: 20px;
-    transition: opacity .2s ease;
+    cursor: pointer;
+    transition: opacity 1s linear;
     outline: none;
-    background-color: transparent;
 }
 
 .element__like-button:hover {
