@@ -8,7 +8,7 @@
     position: absolute;
     right: -40px;
     top: -40px;
-    transition: opacity .5s ease-in;
+    transition: .2s;
     outline: none;
 }
 
