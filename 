@@ -1,0 +1,167 @@
+[33mcommit 674cc2456a6d7c5f03cb43885db6107f14109e93[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mfeatures/popup-card[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue Jun 1 12:33:35 2021 +0200
+
+    feat: сделать логику js для popup
+
+[33mcommit f2c98f62d652110c52578f049feb91bd3095e85b[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Fri May 28 14:42:55 2021 +0200
+
+    feat: доделать логику js в попапах
+
+[33mcommit 2904a86e73d1c36082fdf15c680350459f06e6ff[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Fri May 28 01:50:27 2021 +0200
+
+    feat: написать логику для popup 0.1
+
+[33mcommit 83c3af5a32a6261e5f1fa286e8be1fea992e856b[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Thu May 27 19:00:14 2021 +0200
+
+    feat: создать js реализацию popUp карточек
+
+[33mcommit 5b9837463b8695e58a424df715f8b7d27ef11b9a[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Thu May 27 16:40:14 2021 +0200
+
+    feat: сделать popup карточек, добавить функционал
+
+[33mcommit 9e9d1ff7291e75134b98ce2a9fdb5d13780ff3e6[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Thu May 27 15:47:26 2021 +0200
+
+    feat: сделать popup Для карточек и увеличения картинки
+
+[33mcommit 6eebeaaeb930d456b0f1f658fd7c00635de34361[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Thu May 27 13:51:25 2021 +0200
+
+    feat: добавить popup для добавления карточек
+
+[33mcommit f966de6bcf805e2bcb33fb65a6f6c3730a92556e[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Wed May 19 12:23:33 2021 +0200
+
+    fix: добавить модификаторы для поиска элементов в скрипте
+
+[33mcommit dde1b38e3ab72348f52df583a8844b8db0f82685[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue May 18 20:12:21 2021 +0200
+
+    fix: добавить type всем button .1
+
+[33mcommit 3c9851a08d991040bf51bd490a0a04991dc0dd33[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue May 18 20:08:00 2021 +0200
+
+    fix: добавить type всем button
+
+[33mcommit 415006c58dcd46adf17fa14535389a1fb24e0458[m[33m ([m[1;32mhotfix/html-issue[m[33m)[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue May 18 19:53:59 2021 +0200
+
+    fix: ошибки html и БЭМ, стили css
+
+[33mcommit 1573029bec7d58e1d6736603398ccd25732de931[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue May 18 18:28:33 2021 +0200
+
+    fix: исправить БЭМ, удалить style.css
+
+[33mcommit 27724e2641b32e09ba3c66f00d87a97cad6e08f1[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue May 18 18:25:11 2021 +0200
+
+    style: убрать повторение width в element
+
+[33mcommit 99d6bece2fdfc388437144786184060ff3c8b05b[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue May 18 18:17:33 2021 +0200
+
+    edit: дополнить readme
+
+[33mcommit bd3d646ded00b4b20428964d56bbe17cfd6994ab[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue May 18 18:05:43 2021 +0200
+
+    fix: исправить ошибки валидатора
+
+[33mcommit 5ba1a402e795278662102ac8792375cf8f70a949[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue May 18 17:54:30 2021 +0200
+
+    feat: сделать js для popup .2
+
+[33mcommit 9c5a025948b05f51823c286b40dbb0fa1bdb5995[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue May 18 15:50:00 2021 +0200
+
+    feat: сделать js popup .1
+
+[33mcommit ba1d10ab939521dfddcd9b151ac5b307f2022bf0[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue May 18 15:04:04 2021 +0200
+
+    feat: добавить popup 0.1
+
+[33mcommit 986790f822c79fe729acea77eda6b2b0f8f01096[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue May 18 13:11:51 2021 +0200
+
+    edit: перенести в ветку features и сделать popup
+
+[33mcommit 94f9c51657062ccffbf4cbd67cbb35126f460e90[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Mon May 17 19:40:55 2021 +0200
+
+    feat: сделать адаптив 3
+
+[33mcommit e88814b743c43a1cb8afaf056394b2553c5dc327[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Mon May 17 18:39:08 2021 +0200
+
+    feat: сделать адаптив 2
+
+[33mcommit f064c0cbb19b91277000d673ddf17327abb98ed4[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Wed May 12 17:30:48 2021 +0200
+
+    edit: сделать адаптив, начать с profile
+
+[33mcommit 88456ca22a2f0b2cea37a23b73d0546d7e29da67[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Wed May 12 17:13:55 2021 +0200
+
+     feat: сделать адаптив
+
+[33mcommit d8d86e7dd7c592d530f557b3b00f5dc9b1f94413[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Wed May 12 15:58:16 2021 +0200
+
+    feat: сделать футер
+
+[33mcommit e6d0e76a56e0a4781eb695d639bb23899f5cee0e[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Wed May 12 14:40:34 2021 +0200
+
+    feat: сделать секцию elements
+
+[33mcommit 871296113a92383383c58f43c67cc61427351e06[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Wed May 12 12:48:40 2021 +0200
+
+    тестовый коммит
+
+[33mcommit 769dba26c471f1047f5f9538363ba79d4bf8ec2a[m
+Author: Alexanrd Leibch <71503887+DeadlyVi@users.noreply.github.com>
+Date:   Tue May 11 22:04:57 2021 +0200
+
+    подготовить проект, создать файлы, залить картинки
+
+[33mcommit a2836a9f71a86c5d9ab23d0ed2b2d60a89cf799d[m
+Author: AlexLeibch <81337810+AlexLeibch@users.noreply.github.com>
+Date:   Tue May 11 18:42:07 2021 +0200
+
+    Initial commit
