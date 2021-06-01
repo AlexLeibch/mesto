@@ -9,8 +9,8 @@ const closeButtonImage = imagePopup.querySelector('.popup__button-close'); // к
 const closeButtopPopUp = document.querySelector('.popup__button-close')
 const username = document.querySelector('.profile__username'); // имя профиля в профиле
 const description = document.querySelector('.profile__user-description'); // описание профиля на странице
-const formElementProfile = profilePopup.querySelector('.popup__input-profile'); // форма ввода инфы в профиле
-const formElementCard = cardPopup.querySelector('.popup__input-card') // форма для вставки фотографии
+const formElementProfile = profilePopup.querySelector('.popup__form-profile'); // форма ввода инфы в профиле
+const formElementCard = cardPopup.querySelector('.popup__form-card') // форма для вставки фотографии
 const nameInput = document.querySelector('.popup__field_type_name'); // поле для ввода имени
 const jobInput = document.querySelector('.popup__field_type_description'); // поле для ввода описания
 const inputCardPlace = cardPopup.querySelector('.popup__field_type_place'); // поле для ввода места
@@ -88,7 +88,7 @@ function handleProfileFormSubmit (evt) {
  closePopup(profilePopup);
 }
 
-formElementProfile.addEventListener('submit', handleProfileFormSubmit); // formElementProfile
+formElementProfile.addEventListener('submit', handleProfileFormSubmit); 
 
 function createNewCard(item) {
  const addCard = cardTemplate.content.cloneNode(true);
@@ -147,6 +147,6 @@ function addCard(evt) {
  closePopup(cardPopup)
 }
 
-formElementCard.addEventListener('submit', addCard) // cardElement
+formElementCard.addEventListener('submit', addCard) 
 renderCard()
 
