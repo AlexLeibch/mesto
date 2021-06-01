@@ -1,6 +1,6 @@
-const profilePopup = document.querySelector('.profilepopup') // редактировать профиль попапа
-const cardPopup = document.querySelector('.cardpopup'); // редактировать попап карточек
-const imagePopup = document.querySelector('.imagepopup'); // попап открытия фотографии
+const profilePopup = document.querySelector('.popup_type_profile') // редактировать профиль попапа
+const cardPopup = document.querySelector('.popup_type_cardpopup'); // редактировать попап карточек
+const imagePopup = document.querySelector('.popup_type_imagepopup'); // попап открытия фотографии
 const editPopupButton = document.querySelector('.profile__edit-button'); // кнопка редактирования профиля
 const addPopupButton = document.querySelector('.profile__add-button'); // кнопка добавления карточки
 const closeButtonProfile = profilePopup.querySelector('.popup__button-close'); // кнопка закрытия редактирования профиля
@@ -9,8 +9,8 @@ const closeButtonImage = imagePopup.querySelector('.popup__button-close'); // к
 const closeButtopPopUp = document.querySelector('.popup__button-close')
 const username = document.querySelector('.profile__username'); // имя профиля в профиле
 const description = document.querySelector('.profile__user-description'); // описание профиля на странице
-const formElement = profilePopup.querySelector('.popup__input'); // форма ввода инфы в профиле
-const cardElement = cardPopup.querySelector('.popup__input') // форма для вставки фотографии
+const formElementProfile = profilePopup.querySelector('.popup__input-profile'); // форма ввода инфы в профиле
+const formElementCard = cardPopup.querySelector('.popup__input-card') // форма для вставки фотографии
 const nameInput = document.querySelector('.popup__field_type_name'); // поле для ввода имени
 const jobInput = document.querySelector('.popup__field_type_description'); // поле для ввода описания
 const inputCardPlace = cardPopup.querySelector('.popup__field_type_place'); // поле для ввода места
@@ -18,6 +18,8 @@ const inputCardUrl = cardPopup.querySelector('.popup__field_type_imageUrl'); // 
 const cardSection = document.querySelector('.elements'); // секция фотокарточек
 const cardTemplate = document.querySelector('.elements-template'); // template вставка
 const cardButtonSave = cardPopup.querySelector('.popup__button-save')
+const imageTag = document.querySelector('.popup__image');
+const imageTitle = document.querySelector('.popup__caption');
 const initialCards = [
     {
       name: 'Архыз',
@@ -79,16 +81,16 @@ closeButtonImage.addEventListener('click', () => {
  closePopup(imagePopup)
 })
 
-function formSubmitHandler (evt) {
+function handleProfileFormSubmit (evt) {
  evt.preventDefault();
  username.textContent = (nameInput.value);
  description.textContent = (jobInput.value);
  closePopup(profilePopup);
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
+formElementProfile.addEventListener('submit', handleProfileFormSubmit); // formElementProfile
 
-function newCard(item) {
+function createNewCard(item) {
  const addCard = cardTemplate.content.cloneNode(true);
  const addImg = addCard.querySelector('.element__image');
  const addTitle = addCard.querySelector('.element__title');
@@ -112,12 +114,12 @@ function newCard(item) {
    CardItem.remove()
  });
 
- const imageTag = document.querySelector('.popup__image');
- const imageTitle = document.querySelector('.popup__caption');
+
 
  addImg.addEventListener('click', function (){
    openPopup(imagePopup)
    imageTag.src = addImg.src
+   imageTag.alt = addImg.alt
    imageTitle.textContent = addTitle.textContent
  });
 
@@ -126,16 +128,17 @@ function newCard(item) {
 
 function renderCard() {
  const arrayCards = initialCards
-   .map(newCard)
+   .map(createNewCard)
    cardSection.append(...arrayCards)
 }
 
 function addCard(evt) {
+  
  evt.preventDefault()
  const inputPlace = inputCardPlace.value;
  const inputUrl = inputCardUrl.value;
 
- const cardItem = newCard({name: inputPlace, link: inputUrl})
+ const cardItem = createNewCard({name: inputPlace, link: inputUrl})
  cardSection.prepend(cardItem);
 
  inputCardPlace.value = ''
@@ -144,31 +147,6 @@ function addCard(evt) {
  closePopup(cardPopup)
 }
 
-cardElement.addEventListener('submit', addCard)
+formElementCard.addEventListener('submit', addCard) // cardElement
 renderCard()
 
-/* function openPopup (evt) {
-    popup.classList.add('popup_opened')
-    nameInput.value = (username.textContent);
-    jobInput.value = (description.textContent);
-}
-
-
-
-
-function closePopup(evt) {
-    popup.classList.remove('popup_opened');
-}
-
-function formSubmitHandler (evt) {
-    evt.preventDefault();
-    username.textContent = (nameInput.value);
-    description.textContent = (jobInput.value);
-    closePopup(evt);
-}
-
-formElement.addEventListener('submit', formSubmitHandler);
-openPopupButton.addEventListener('click', openPopup);
-closePopupButton.addEventListener('click', closePopup);
-openPopupButtonAddCard.addEventListener('click', openPopup);
- */

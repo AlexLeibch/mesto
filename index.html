@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href='./styles/index.css'>
+    <link rel="stylesheet" href='./pages/index.css'>
     <title>Mesto</title>
 </head>
 <body class=page>
@@ -32,29 +32,29 @@
         <footer class="footer">
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
-        <section class="popup profilepopup">
+        <section class="popup popup_type_profile">
             <div class="popup__container">
                 <button type="button" class="popup__button-close"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form name="popup" class="popup__input">
+                <form name="popup" class="popup__input popup__input-profile">
                     <input type="text" name="name" value="Имя" placeholder="Имя" required class="popup__field popup__field_type_name">
                     <input type="text" name="description" value="описание" placeholder="описание" required class="popup__field popup__field_type_description">
                     <button  type="submit" class="popup__button-save">Сохранить</button>
                 </form>
             </div>
         </section>
-        <section class="popup cardpopup">
+        <section class="popup popup_type_cardpopup">
             <div class="popup__container">
                 <button type="button" class="popup__button-close  popup__button-close_card-add"></button>
                 <h2 class="popup__title">Новое место</h2>
-                <form name="popup" class="popup__input">
+                <form name="popup" class="popup__input popup__input-card">
                     <input type="text" name="placeName"  placeholder="Название" required class="popup__field popup__field_type_place">
                     <input type="text" name="imageURUL"  placeholder="Ссылка на картинку" required class="popup__field popup__field_type_imageUrl">
                     <button  type="submit" class="popup__button-save">Создать</button>
                 </form> 
             </div>
         </section>
-        <section class="popup imagepopup">
+        <section class="popup popup_type_imagepopup">
             <div class="popup__figure-container">
                 <figure class="popup__figure">
                     <img src="#" alt="#" class = "popup__image">
