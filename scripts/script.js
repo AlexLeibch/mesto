@@ -20,6 +20,7 @@ const cardTemplate = document.querySelector('.elements-template'); // template �
 const cardButtonSave = cardPopup.querySelector('.popup__button-save')
 const imageTag = document.querySelector('.popup__image');
 const imageTitle = document.querySelector('.popup__caption');
+const popup = document.querySelector('.popup')
 const initialCards = [
     {
       name: 'Архыз',
@@ -47,10 +48,38 @@ const initialCards = [
     }
   ]; 
 
-   // функция открытия попапа
- const openPopup = (popUpElement) => {
-  popUpElement.classList.add('popup_opened');  
+  function closeOnEsc(evt) {
+    if (evt.key === 'Escape') {
+      closePopup(document.querySelector('.popup_opened'))
+    }
+  }  
+
+  
+const closeOnClick = (popup) => {
+  popup.addEventListener('click', (evt) => {
+    if(evt.target === evt.currentTarget) {
+      popup.classList.remove('popup_opened');
+    }
+  })
 }
+
+  
+  
+  // функция открытия попапа
+ const openPopup = (popup) => {
+  popup.classList.add('popup_opened'); 
+  document.addEventListener('keydown', closeOnEsc) 
+  closeOnClick(popup)
+
+}
+
+ // функция закрытия попапа
+ const closePopup = (popup) => {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeOnEsc)
+  closeOnClick(popup)
+ 
+ }
 
 editPopupButton.addEventListener('click',  () => {
   openPopup(profilePopup);
@@ -62,11 +91,8 @@ addPopupButton.addEventListener('click', () => {
  openPopup(cardPopup);
 })
 
- // функция закрытия попапа
-const closePopup = (popUpElement) => {
- popUpElement.classList.remove('popup_opened');
 
-}
+
 closePopup(closeButtopPopUp);
 
 closeButtonProfile.addEventListener('click', () =>{

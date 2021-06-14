@@ -46,4 +46,8 @@
 @import url(../blocks/popup/__figure-container/popup__figure-container.css);
 @import url(../blocks/popup/__form/popup__form.css);
 
-
+/* ошибки */
+@import url(../blocks/popup/__error/popup__error.css);
+@import url(../blocks/popup/__error-active/popup__error-active.css);
+@import url(../blocks/popup/__button-disabled/popup__button-disabled.css);
+@import url(../blocks/popup/__field-invalid/popup__field-invalid.css);

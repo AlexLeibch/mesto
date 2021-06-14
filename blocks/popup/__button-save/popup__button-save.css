@@ -12,6 +12,7 @@
     cursor: pointer;
     transition: opacity .1s linear;
     outline: none;
+    margin-top: 31px;
     
 }
 
