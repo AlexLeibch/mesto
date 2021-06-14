@@ -8,15 +8,10 @@
     padding-bottom: 13px;
 }
 
-.popup__field:last-of-type {
-    margin-bottom: ;
-}
+
 
 @media screen and (max-width: 565px) {
     .popup__field {
         width: 238px;
-    }
-    .popup__field:last-of-type {
-        margin-bottom: 
     }
 }
