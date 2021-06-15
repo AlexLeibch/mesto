@@ -6,7 +6,7 @@ const addPopupButton = document.querySelector('.profile__add-button'); // кно
 const closeButtonProfile = profilePopup.querySelector('.popup__button-close'); // кнопка закрытия редактирования профиля
 const closeButtonCard =  cardPopup.querySelector('.popup__button-close'); // кнопка закрытия добавления карточки
 const closeButtonImage = imagePopup.querySelector('.popup__button-close'); // кнопка закрытия фотографии
-const closeButtopPopUp = document.querySelector('.popup__button-close')
+const closeButtonPopUp = document.querySelector('.popup__button-close')
 const username = document.querySelector('.profile__username'); // имя профиля в профиле
 const description = document.querySelector('.profile__user-description'); // описание профиля на странице
 const formElementProfile = profilePopup.querySelector('.popup__form-profile'); // форма ввода инфы в профиле
@@ -91,7 +91,7 @@ addPopupButton.addEventListener('click', () => {
 
 
 
-closePopup(closeButtopPopUp);
+closePopup(closeButtonPopUp);
 
 closeButtonProfile.addEventListener('click', () =>{
  closePopup(profilePopup);
@@ -107,8 +107,8 @@ closeButtonImage.addEventListener('click', () => {
 
 function handleProfileFormSubmit (evt) {
  evt.preventDefault();
- username.textContent = (nameInput.value);
- description.textContent = (jobInput.value);
+ username.textContent = nameInput.value;
+ description.textContent = jobInput.value;
  closePopup(profilePopup);
 }
 
@@ -134,8 +134,8 @@ function createNewCard(item) {
  // кнопка удаления
 
  removeButton.addEventListener('click', function () {
-   const CardItem = removeButton.closest('.card');
-   CardItem.remove()
+   const cardItem = removeButton.closest('.card');
+   cardItem.remove()
  });
 
 
