@@ -21,7 +21,7 @@ const arrayForms = {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(errorClass)
     errorElement.classList.remove(inputErrorClass)
-    errorElement.textContent = ""
+    errorElement.textContent = "";
   }
   
   const isValid = (formElement, inputElement, inputErrorClass, errorClass) => {

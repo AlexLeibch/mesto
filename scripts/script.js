@@ -55,13 +55,11 @@ const initialCards = [
   }  
 
   
-const closeOnClick = (popup) => {
-  popup.addEventListener('click', (evt) => {
+const closeOnClick = (evt) => {
     if(evt.target === evt.currentTarget) {
-      popup.classList.remove('popup_opened');
+     closePopup(document.querySelector('.popup_opened'))
     }
-  })
-}
+  }
 
   
   
@@ -69,7 +67,7 @@ const closeOnClick = (popup) => {
  const openPopup = (popup) => {
   popup.classList.add('popup_opened'); 
   document.addEventListener('keydown', closeOnEsc) 
-  closeOnClick(popup)
+  popup.addEventListener('mousedown', closeOnClick )
 
 }
 
@@ -77,7 +75,7 @@ const closeOnClick = (popup) => {
  const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeOnEsc)
-  closeOnClick(popup)
+  popup.removeEventListener('mousedown', closeOnClick)
  
  }
 
