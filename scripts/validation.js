@@ -1,6 +1,3 @@
-
-
-
 const arrayForms = {
     formSelector: '.popup__form',
     inputSelector: '.popup__field',
@@ -13,14 +10,14 @@ const arrayForms = {
   
   const showInputError = (formElement, inputElement, errorMessage, inputErrorClass, errorClass) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add(errorClass);
+    errorElement.classList.add(errorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add(inputErrorClass);
+    inputElement.classList.add(inputErrorClass);
   }
   const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove(errorClass)
-    errorElement.classList.remove(inputErrorClass)
+    errorElement.classList.remove(errorClass)
+    inputElement.classList.remove(inputErrorClass)
     errorElement.textContent = "";
   }
   
@@ -54,10 +51,11 @@ const arrayForms = {
   const setEventListeners = (formElement, inputSelector, submitButtonSelector, disabledButtonSelector, inputErrorClass, errorClass) => {
     const inputList = Array.from(formElement.querySelectorAll(inputSelector));
     const buttonElement = formElement.querySelector(submitButtonSelector)
+    console.log(inputList)
     
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input",() => {
-        isValid(formElement, inputElement, errorClass, inputErrorClass)
+        isValid(formElement, inputElement, inputErrorClass, errorClass)
         toggleButtonState(inputList, buttonElement, disabledButtonSelector);
       })
     })
@@ -81,4 +79,9 @@ const arrayForms = {
     });
   }
   
+
+  
+
+
+
   enableValidation(arrayForms);

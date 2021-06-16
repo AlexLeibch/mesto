@@ -55,38 +55,39 @@ const initialCards = [
   }  
 
   
-const closeOnClick = (evt) => {
+  const closeOnClick = (evt) => {
     if(evt.target === evt.currentTarget) {
-     closePopup(document.querySelector('.popup_opened'))
+      closePopup(document.querySelector('.popup_opened'))
     }
   }
 
   
   
   // функция открытия попапа
- const openPopup = (popup) => {
-  popup.classList.add('popup_opened'); 
-  document.addEventListener('keydown', closeOnEsc) 
-  popup.addEventListener('mousedown', closeOnClick )
-
-}
+  const openPopup = (popup) => {
+    popup.classList.add('popup_opened'); 
+    document.addEventListener('keydown', closeOnEsc);
+    popup.addEventListener('mousedown', closeOnClick);
+  }
 
  // функция закрытия попапа
- const closePopup = (popup) => {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeOnEsc)
-  popup.removeEventListener('mousedown', closeOnClick)
- 
- }
+  const closePopup = (popup) => {
+    popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeOnEsc)
+    popup.removeEventListener('mousedown', closeOnClick)
+  }
+
 
 editPopupButton.addEventListener('click',  () => {
   openPopup(profilePopup);
-  nameInput.value = (username.textContent);
-  jobInput.value = (description.textContent);
+  nameInput.value = username.textContent;
+  jobInput.value = description.textContent;
+  isValid(profilePopup, nameInput, arrayForms.inputErrorClass, arrayForms.errorClass)
+  isValid(profilePopup, jobInput, arrayForms.inputErrorClass, arrayForms.errorClass)
 })
 
 addPopupButton.addEventListener('click', () => {
- openPopup(cardPopup);
+  openPopup(cardPopup);
 })
 
 
@@ -98,7 +99,11 @@ closeButtonProfile.addEventListener('click', () =>{
 })
 
 closeButtonCard.addEventListener('click', () =>{
- closePopup(cardPopup); 
+  closePopup(cardPopup); 
+  console.log(inputCardPlace, inputCardUrl)
+  isValid(cardPopup, inputCardPlace, arrayForms.inputErrorClass, arrayForms.errorClass)
+  isValid(cardPopup, inputCardUrl, arrayForms.inputErrorClass, arrayForms.errorClass)
+ 
 })
 
 closeButtonImage.addEventListener('click', () => {
@@ -115,15 +120,15 @@ function handleProfileFormSubmit (evt) {
 formElementProfile.addEventListener('submit', handleProfileFormSubmit); 
 
 function createNewCard(item) {
- const addCard = cardTemplate.content.cloneNode(true);
- const addImg = addCard.querySelector('.element__image');
- const addTitle = addCard.querySelector('.element__title');
+  const addCard = cardTemplate.content.cloneNode(true);
+  const addImg = addCard.querySelector('.element__image');
+  const addTitle = addCard.querySelector('.element__title');
 
- addImg.src = item.link
- addImg.alt = item.name
- addTitle.textContent = item.name
+  addImg.src = item.link
+  addImg.alt = item.name
+  addTitle.textContent = item.name
 
- const likeButton = addCard.querySelector('.element__like-button')
+  const likeButton = addCard.querySelector('.element__like-button')
  
  likeButton.addEventListener('click', (evt) => {
    evt.target.classList.toggle('element__like-button_active')
@@ -138,9 +143,7 @@ function createNewCard(item) {
    cardItem.remove()
  });
 
-
-
- addImg.addEventListener('click', function (){
+  addImg.addEventListener('click', function (){
    openPopup(imagePopup)
    imageTag.src = addImg.src
    imageTag.alt = addImg.alt
@@ -161,12 +164,15 @@ function addCard(evt) {
  evt.preventDefault()
  const inputPlace = inputCardPlace.value;
  const inputUrl = inputCardUrl.value;
-
  const cardItem = createNewCard({name: inputPlace, link: inputUrl})
  cardSection.prepend(cardItem);
 
  inputCardPlace.value = ''
  inputCardUrl.value = ''
+
+ const buttonSubmit = evt.target.querySelector('.popup__button-save')
+ buttonSubmit.setAttribute('disabled', 'true');
+ buttonSubmit.classList.add('popup__button-disabled');
 
  closePopup(cardPopup)
 }
