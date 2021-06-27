@@ -41,7 +41,7 @@ const arrayForms = {
       buttonElement.setAttribute('disabled', true);
     }else {
       buttonElement.classList.remove(disabledButtonSelector)
-      buttonElement.removeAttribute('disabled');
+      buttonElement.removeAttribute('disabled');  
     }
   }
   
