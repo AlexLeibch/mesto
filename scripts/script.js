@@ -65,7 +65,7 @@ const initialCards = [
   
   // функция открытия попапа
   const openPopup = (popup) => {
-    popup.classList.add('popup_opened'); 
+    popup.classList.add('popup_opened');
     document.addEventListener('keydown', closeOnEsc);
     popup.addEventListener('mousedown', closeOnClick);
   }
@@ -100,10 +100,8 @@ closeButtonProfile.addEventListener('click', () =>{
 
 closeButtonCard.addEventListener('click', () =>{
   closePopup(cardPopup); 
-  console.log(inputCardPlace, inputCardUrl)
   isValid(cardPopup, inputCardPlace, arrayForms.inputErrorClass, arrayForms.errorClass)
   isValid(cardPopup, inputCardUrl, arrayForms.inputErrorClass, arrayForms.errorClass)
- 
 })
 
 closeButtonImage.addEventListener('click', () => {
@@ -161,20 +159,20 @@ function renderCard() {
 
 function addCard(evt) {
   
- evt.preventDefault()
- const inputPlace = inputCardPlace.value;
- const inputUrl = inputCardUrl.value;
- const cardItem = createNewCard({name: inputPlace, link: inputUrl})
- cardSection.prepend(cardItem);
+  evt.preventDefault()
+  const inputPlace = inputCardPlace.value;
+  const inputUrl = inputCardUrl.value;
+  const cardItem = createNewCard({name: inputPlace, link: inputUrl})
+  cardSection.prepend(cardItem);
 
- inputCardPlace.value = ''
- inputCardUrl.value = ''
+  inputCardPlace.value = ''
+  inputCardUrl.value = ''
 
- const buttonSubmit = evt.target.querySelector('.popup__button-save')
- buttonSubmit.setAttribute('disabled', 'true');
- buttonSubmit.classList.add('popup__button-disabled');
+  const buttonSubmit = evt.target.querySelector('.popup__button-save')
+  buttonSubmit.setAttribute('disabled', 'true');
+  buttonSubmit.classList.add('popup__button-disabled');
 
- closePopup(cardPopup)
+  closePopup(cardPopup)
 }
 
 formElementCard.addEventListener('submit', addCard) 
