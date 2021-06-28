@@ -1,12 +1,17 @@
-import {classSection, initialCards} from './const.js'
+import {classSection, initialCards, validationConfig} from './const.js'
 const popupImage = document.querySelector('.popup_type_imagepopup')
 const imageTag = popupImage.querySelector('.popup__image');
 const imageTitle = popupImage.querySelector('.popup__caption');
+const handleCardClick = (popup) => {
+    popup.classList.add('popup_opened')
+    popup.addEventListener('keydown', closeOnEsc)
+}
 export default class Card {
-    constructor(data, cardSelector) {
+    constructor(data, cardSelector, openPopup) {
         this._name = data.name
         this._link = data.link
         this._cardSelector = cardSelector
+        this._openPopup = openPopup
     }
 
     _getTemplate() {
@@ -20,7 +25,7 @@ export default class Card {
     }
 
     _like() {
-         this._element.querySelector('.element__like-button').classList.toggle('element__like-button_active')
+        this._element.querySelector('.element__like-button').classList.toggle('element__like-button_active')
     }
 
     _deleteCard() {
@@ -45,7 +50,7 @@ export default class Card {
     }
 
     _openImage() {
-        document.querySelector('.popup_type_imagepopup').classList.add('popup_opened')
+        this._openPopup(popupImage)
         imageTag.src = this._link
         imageTag.alt = this._name
         imageTitle.textContent = this._name
@@ -60,13 +65,10 @@ export default class Card {
 
         return this._element
     }
-
 }
 
 
-    initialCards.forEach((item) => {
-        const card = new Card(item, '.elements-template')
-        const cardElement = card.generateCard()
-        
-        classSection.append(cardElement);
-})
+function closeOnEsc(evt) {
+    if (evt.key === "Escape") {
+      handleCardClick.classList.remove('popup__opened');
+    }}

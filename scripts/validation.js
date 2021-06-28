@@ -51,7 +51,6 @@ const arrayForms = {
   const setEventListeners = (formElement, inputSelector, submitButtonSelector, disabledButtonSelector, inputErrorClass, errorClass) => {
     const inputList = Array.from(formElement.querySelectorAll(inputSelector));
     const buttonElement = formElement.querySelector(submitButtonSelector)
-    console.log(inputList)
     
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input",() => {

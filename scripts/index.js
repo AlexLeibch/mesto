@@ -1,5 +1,6 @@
 import Card from './Card1.js'
-import {classSection, initialCards} from './const.js'
+import {FormValidator} from './FormValidator.js';
+import {classSection, initialCards, validationConfig} from './const.js'
 const profilePopup = document.querySelector('.popup_type_profile') // редактировать профиль попапа
 const cardPopup = document.querySelector('.popup_type_cardpopup'); // редактировать попап карточек
 const imagePopup = document.querySelector('.popup_type_imagepopup'); // попап открытия фотографии
@@ -23,6 +24,7 @@ const cardButtonSave = cardPopup.querySelector('.popup__button-save')
 const imageTag = document.querySelector('.popup__image');
 const imageTitle = document.querySelector('.popup__caption');
 const popup = document.querySelector('.popup')
+const clearProfile = document.forms['popup-card']
 
   function closeOnEsc(evt) {
     if (evt.key === 'Escape') {
@@ -58,8 +60,6 @@ editPopupButton.addEventListener('click',  () => {
   openPopup(profilePopup);
   nameInput.value = username.textContent;
   jobInput.value = description.textContent;
-  isValid(profilePopup, nameInput, arrayForms.inputErrorClass, arrayForms.errorClass)
-  isValid(profilePopup, jobInput, arrayForms.inputErrorClass, arrayForms.errorClass)
 })
 
 addPopupButton.addEventListener('click', () => {
@@ -76,8 +76,6 @@ closeButtonProfile.addEventListener('click', () =>{
 
 closeButtonCard.addEventListener('click', () =>{
   closePopup(cardPopup); 
-  isValid(cardPopup, inputCardPlace, arrayForms.inputErrorClass, arrayForms.errorClass)
-  isValid(cardPopup, inputCardUrl, arrayForms.inputErrorClass, arrayForms.errorClass)
 })
 
 closeButtonImage.addEventListener('click', () => {
@@ -92,6 +90,57 @@ function handleProfileFormSubmit (evt) {
 }
 
 formElementProfile.addEventListener('submit', handleProfileFormSubmit); 
+
+
+
+function submitCardAdd(evt) {
+  evt.preventDefault()
+  const inputPlace = inputCardPlace.value;
+  const inputUrl = inputCardUrl.value;
+  const newCard = new Card({name: inputPlace, link: inputUrl}, '.elements-template', openPopup)
+  const newCardAdd = newCard.generateCard();
+  classSection.prepend(newCardAdd);
+  closePopup(cardPopup)
+  clearProfile.reset()
+
+
+}
+
+formElementCard.addEventListener('submit', submitCardAdd)
+
+initialCards.forEach((item) => {
+  const card = new Card(item, '.elements-template', openPopup)
+  const cardElement = card.generateCard()
+  classSection.append(cardElement);
+})
+
+const profileValidation = new FormValidator(validationConfig, formElementProfile)
+const cardValidation = new FormValidator(validationConfig, formElementCard)
+
+profileValidation.enableValidation()
+cardValidation.enableValidation()
+// // function addCard(evt) {
+  
+//   evt.preventDefault()
+//   const inputPlace = inputCardPlace.value;
+//   const inputUrl = inputCardUrl.value;
+//   const cardItem = createNewCard({name: inputPlace, link: inputUrl})
+//   cardSection.prepend(cardItem);
+
+//   inputCardPlace.value = ''
+//   inputCardUrl.value = ''
+
+//   const buttonSubmit = evt.target.querySelector('.popup__button-save')
+//   buttonSubmit.setAttribute('disabled', 'true');
+//   buttonSubmit.classList.add('popup__button-disabled');
+
+//   closePopup(cardPopup)
+// }
+
+// renderCard()
+
+
+
 
 
 
@@ -134,32 +183,3 @@ formElementProfile.addEventListener('submit', handleProfileFormSubmit);
 //    .map(createNewCard)
 //    cardSection.append(...arrayCards)
 // }
-
-initialCards.forEach((item) => {
-  const card = new Card(item, '.elements-template')
-  const cardElement = card.generateCard()
-  
-  classSection.append(cardElement);
-})
-
-function addCard(evt) {
-  
-  evt.preventDefault()
-  const inputPlace = inputCardPlace.value;
-  const inputUrl = inputCardUrl.value;
-  const cardItem = createNewCard({name: inputPlace, link: inputUrl})
-  cardSection.prepend(cardItem);
-
-  inputCardPlace.value = ''
-  inputCardUrl.value = ''
-
-  const buttonSubmit = evt.target.querySelector('.popup__button-save')
-  buttonSubmit.setAttribute('disabled', 'true');
-  buttonSubmit.classList.add('popup__button-disabled');
-
-  closePopup(cardPopup)
-}
-
-formElementCard.addEventListener('submit', addCard) 
-// renderCard()
-
