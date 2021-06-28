@@ -1,3 +1,5 @@
+import Card from './Card1.js'
+import {classSection, initialCards} from './const.js'
 const profilePopup = document.querySelector('.popup_type_profile') // редактировать профиль попапа
 const cardPopup = document.querySelector('.popup_type_cardpopup'); // редактировать попап карточек
 const imagePopup = document.querySelector('.popup_type_imagepopup'); // попап открытия фотографии
@@ -21,32 +23,6 @@ const cardButtonSave = cardPopup.querySelector('.popup__button-save')
 const imageTag = document.querySelector('.popup__image');
 const imageTitle = document.querySelector('.popup__caption');
 const popup = document.querySelector('.popup')
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ]; 
 
   function closeOnEsc(evt) {
     if (evt.key === 'Escape') {
@@ -117,45 +93,54 @@ function handleProfileFormSubmit (evt) {
 
 formElementProfile.addEventListener('submit', handleProfileFormSubmit); 
 
-function createNewCard(item) {
-  const addCard = cardTemplate.content.cloneNode(true);
-  const addImg = addCard.querySelector('.element__image');
-  const addTitle = addCard.querySelector('.element__title');
 
-  addImg.src = item.link
-  addImg.alt = item.name
-  addTitle.textContent = item.name
 
-  const likeButton = addCard.querySelector('.element__like-button')
+// function createNewCard(item) {
+//   const addCard = cardTemplate.content.cloneNode(true);
+//   const addImg = addCard.querySelector('.element__image');
+//   const addTitle = addCard.querySelector('.element__title');
+
+//   addImg.src = item.link
+//   addImg.alt = item.name
+//   addTitle.textContent = item.name
+
+//   const likeButton = addCard.querySelector('.element__like-button')
  
- likeButton.addEventListener('click', (evt) => {
-   evt.target.classList.toggle('element__like-button_active')
- });
+//  likeButton.addEventListener('click', (evt) => {
+//    evt.target.classList.toggle('element__like-button_active')
+//  });
 
- const removeButton = addCard.querySelector('.element__delete-button')
+//  const removeButton = addCard.querySelector('.element__delete-button')
 
- // кнопка удаления
+//  // кнопка удаления
 
- removeButton.addEventListener('click', function () {
-   const cardItem = removeButton.closest('.card');
-   cardItem.remove()
- });
+//  removeButton.addEventListener('click', function () {
+//    const cardItem = removeButton.closest('.card');
+//    cardItem.remove()
+//  });
 
-  addImg.addEventListener('click', function (){
-   openPopup(imagePopup)
-   imageTag.src = addImg.src
-   imageTag.alt = addImg.alt
-   imageTitle.textContent = addTitle.textContent
- });
+//   addImg.addEventListener('click', function (){
+//    openPopup(imagePopup)
+//    imageTag.src = addImg.src
+//    imageTag.alt = addImg.alt
+//    imageTitle.textContent = addTitle.textContent
+//  });
 
- return addCard
-}
+//  return addCard
+// }
 
-function renderCard() {
- const arrayCards = initialCards
-   .map(createNewCard)
-   cardSection.append(...arrayCards)
-}
+// function renderCard() {
+//  const arrayCards = initialCards
+//    .map(createNewCard)
+//    cardSection.append(...arrayCards)
+// }
+
+initialCards.forEach((item) => {
+  const card = new Card(item, '.elements-template')
+  const cardElement = card.generateCard()
+  
+  classSection.append(cardElement);
+})
 
 function addCard(evt) {
   
@@ -176,5 +161,5 @@ function addCard(evt) {
 }
 
 formElementCard.addEventListener('submit', addCard) 
-renderCard()
+// renderCard()
 
