@@ -10,14 +10,14 @@ export class FormValidator {
     }
 
     _showInputError(formElement, inputElement) {
-        const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
+        const errorElement = formElement.querySelector(`.${inputElement.id}-error`)
         inputElement.classList.add(this._validationConfig.inputErrorClass)
         errorElement.textContent = inputElement.validationMessage;
         errorElement.classList.add(this._validationConfig.errorClass)
     }
 
     _hideInputError(formElement, inputElement) {
-        const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+        const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.remove(this._validationConfig.inputErrorClass);
         errorElement.textContent = inputElement.validationMessage;
         errorElement.classList.remove(this._validationConfig.errorClass);
@@ -39,10 +39,10 @@ export class FormValidator {
 
     _toggleButtonState(buttonElement, inputs) {
         if (this._hasInvalidInput(inputs)) {
-            buttonElement.classList.add(this._validation.disabledButtonSelector)
+            buttonElement.classList.add(this._validationConfig.disabledButtonSelector)
             buttonElement.setAttribute('disabled', true)
         } else {
-            buttonElement.classList.remove(disabledButtonSelector)
+            buttonElement.classList.remove(this._validationConfig.disabledButtonSelector)
             buttonElement.removeAttribute('disabled')
         }
     }
@@ -62,7 +62,7 @@ export class FormValidator {
         const inputs = Array.from(popup.querySelectorAll(this._validationConfig.inputSelector));
         inputs.forEach(inputElement => {
             inputElement.classList.remove(this._validationConfig.inputErrorClass)
-            const errorElement = document.querySelector(`#${inputElement.id}-error`)
+            const errorElement = document.querySelector(`.${inputElement.id}-error`)
             errorElement.textContent = '';
             errorElement.classList.remove(this._validationConfig.errorClass)
         })
