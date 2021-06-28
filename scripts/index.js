@@ -1,4 +1,4 @@
-import Card from './Card1.js'
+import Card from './Card.js'
 import {FormValidator} from './FormValidator.js';
 import {classSection, initialCards, validationConfig} from './const.js'
 const profilePopup = document.querySelector('.popup_type_profile') // редактировать профиль попапа
