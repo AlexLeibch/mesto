@@ -60,10 +60,13 @@ editPopupButton.addEventListener('click',  () => {
   openPopup(profilePopup);
   nameInput.value = username.textContent;
   jobInput.value = description.textContent;
+  profileValidation.clearInputError(cardButtonSave)
+
 })
 
 addPopupButton.addEventListener('click', () => {
   openPopup(cardPopup);
+  cardValidation.disabledButton(cardButtonSave)
 })
 
 
@@ -103,7 +106,6 @@ function submitCardAdd(evt) {
   closePopup(cardPopup)
   clearProfile.reset()
 
-
 }
 
 formElementCard.addEventListener('submit', submitCardAdd)
@@ -119,67 +121,3 @@ const cardValidation = new FormValidator(validationConfig, formElementCard)
 
 profileValidation.enableValidation()
 cardValidation.enableValidation()
-// // function addCard(evt) {
-  
-//   evt.preventDefault()
-//   const inputPlace = inputCardPlace.value;
-//   const inputUrl = inputCardUrl.value;
-//   const cardItem = createNewCard({name: inputPlace, link: inputUrl})
-//   cardSection.prepend(cardItem);
-
-//   inputCardPlace.value = ''
-//   inputCardUrl.value = ''
-
-//   const buttonSubmit = evt.target.querySelector('.popup__button-save')
-//   buttonSubmit.setAttribute('disabled', 'true');
-//   buttonSubmit.classList.add('popup__button-disabled');
-
-//   closePopup(cardPopup)
-// }
-
-// renderCard()
-
-
-
-
-
-
-// function createNewCard(item) {
-//   const addCard = cardTemplate.content.cloneNode(true);
-//   const addImg = addCard.querySelector('.element__image');
-//   const addTitle = addCard.querySelector('.element__title');
-
-//   addImg.src = item.link
-//   addImg.alt = item.name
-//   addTitle.textContent = item.name
-
-//   const likeButton = addCard.querySelector('.element__like-button')
- 
-//  likeButton.addEventListener('click', (evt) => {
-//    evt.target.classList.toggle('element__like-button_active')
-//  });
-
-//  const removeButton = addCard.querySelector('.element__delete-button')
-
-//  // кнопка удаления
-
-//  removeButton.addEventListener('click', function () {
-//    const cardItem = removeButton.closest('.card');
-//    cardItem.remove()
-//  });
-
-//   addImg.addEventListener('click', function (){
-//    openPopup(imagePopup)
-//    imageTag.src = addImg.src
-//    imageTag.alt = addImg.alt
-//    imageTitle.textContent = addTitle.textContent
-//  });
-
-//  return addCard
-// }
-
-// function renderCard() {
-//  const arrayCards = initialCards
-//    .map(createNewCard)
-//    cardSection.append(...arrayCards)
-// }

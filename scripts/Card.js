@@ -2,10 +2,7 @@ import {classSection, initialCards, validationConfig} from './const.js'
 const popupImage = document.querySelector('.popup_type_imagepopup')
 const imageTag = popupImage.querySelector('.popup__image');
 const imageTitle = popupImage.querySelector('.popup__caption');
-const handleCardClick = (popup) => {
-    popup.classList.add('popup_opened')
-    popup.addEventListener('keydown', closeOnEsc)
-}
+
 export default class Card {
     constructor(data, cardSelector, openPopup) {
         this._name = data.name
@@ -68,7 +65,3 @@ export default class Card {
 }
 
 
-function closeOnEsc(evt) {
-    if (evt.key === "Escape") {
-      handleCardClick.classList.remove('popup__opened');
-    }}
