@@ -7,7 +7,7 @@ export default class PopupWithForm extends Popup {
     }
 
     _getInputValues() {
-        this._formPopup = this._popup.querySelectorAll('.popup__field')
+        this._formPopup = this._popupSelector.querySelectorAll('.popup__field')
         this._inputValue = {}
         this._formPopup.forEach(input => {
         this._inputValue[input.name] = input.value
@@ -25,6 +25,5 @@ export default class PopupWithForm extends Popup {
     }
     close() {
         super.close()
-        this._popupSelector.querySelector('popup__input').reset()
     }
 }

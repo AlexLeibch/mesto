@@ -42,80 +42,11 @@ import {
 const popupWithImage = new PopupWithImage('.popup_type_imagepopup', '.popup__image','.popup__caption')
 popupWithImage.setEventListeners()
 
-function createCard(item) {
-  const newCard = new Card(item, cardSelector, {
-    handleCardClick: (link, title) => {
-      popupWithImage.open(link, title)
-    }
-  })
-  const newUserCard = newCard.generateCard();
-  return newUserCard;
-}
+const profilePopupEdit = new PopupWithForm('.popup_type_profile', submitProfileForm)
+profilePopupEdit.setEventListeners()
 
-
-const cardList = new Section({
-  items: initialCards,
-  renderer: (cardItem) => {
-    const newCard = createCard(cardItem)
-    cardList.setItem(newCard)
-  }
-}, '.elements')
-cardList.renderedItems()
-
-
-
-
-
-// const profilePopupEdit = new PopupWithForm(profilePopupSelector, submitProfileForm)
-// profilePopupEdit.setEventListeners()
-
-// const popupWithImage = new PopupWithImage(imagePopupSelector,imageTagSelector, imageTitleSelector)
-// popupWithImage.setEventListeners()
-
-// const cardPopupAdd = new PopupWithForm(cardPopupSelector, submitCardAdd)
-// cardPopupAdd.setEventListeners()
-
-
-// function submitProfileForm() {
-//   const userInfo = {
-//     name: nameInput,
-//     job: jobInput
-//   }
-
-//   userInfo.setUserInfo(info)
-//   profilePopupEdit.close()
-// }
-
-// function submitCardAdd() {
-//   inputTitle = inputCardPlace.nodeValue
-//   inputLink = inputCardUrl.value
-
-//   const cardItem = ({name: inputCardPlace, link: inputCardUrl})
-
-//   formCard.reset()
-//   cardPopupAdd.close()
-// }
-
-// function createCard(item) {
-//   const newCard = new Card(item, cardTemplate, {
-//     handleCardClick: (name, link) => {
-//       popupWithImage.open(name,link)
-//     }
-//   })
-//   const newUserCard = newCard.generateCard()
-//   return newUserCard
-// }
-
-// const cardList = new Section({
-//   items: initialCards,
-//   renderer: (cardItem) => {
-//     const newCard = createCard(cardItem)
-//     cardList.setItem(newCard)
-//   }
-// }, cardSectionSelector)
-
-// cardList.renderedItems()
-
+const cardPopupEdit = new PopupWithForm('.popup_type_cardpopup', submitAddCard)
+cardPopupEdit.setEventListeners()
 
 
 const profileValidation = new FormValidator(validationConfig, formElementProfile)
@@ -126,15 +57,60 @@ cardValidation.enableValidation()
 
 
 
+function createCard(item) {
+  const newCard = new Card(item, cardSelector, {
+    handleCardClick: (link, title) => {
+      popupWithImage.open(link, title)
+    }
+  })
+  const newUserCard = newCard.generateCard();
+  return newUserCard;
+}
+
+const cardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const newCard = createCard(item)
+    cardList.setItem(newCard)
+  }
+}, '.elements')
+cardList.renderedItems()
 
 
+function submitProfileForm() {
+  const info = {
+    user: nameInput.value,
+    description: jobInput.value
+  }
 
+  userInfo.setUserInfo(info)
+  profilePopupEdit.close()
+}
 
+addPopupButton.addEventListener('click', () => {
+  cardPopupEdit.open()
+  cardValidation.disabledButton(cardButtonSave)
+})
 
+const userInfo = new UserInfo({userName: '.profile__username', userDescription: '.profile__user-description'})
+editPopupButton.addEventListener('click', () => {
+  profilePopupEdit.open();
+  const currentInfo = userInfo.getUserInfo()
+  nameInput.value = currentInfo.name
+  jobInput.value = currentInfo.description
+  profileValidation.clearInputError(cardButtonSave)
+})
 
+function submitAddCard() {
+  const inputTitle = inputCardPlace.value
+  const inputLink = inputCardUrl.value
+  const cardItem = ({name: inputTitle, link: inputLink})
+  cardSection.prepend(createCard(cardItem))
+  
+  formElementCard.reset()
+  cardPopupEdit.close()
 
-
-
+}
 
 
 
