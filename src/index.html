@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='./pages/index.css'>
+    <title>Mesto</title>
+</head>
+<body class="page">
+    <div class="page__root">
+        <header class="header">
+            <img src="./vendor/image/header_logo.svg" alt="лого шапки" class="header__logo">
+        </header>
+        <main class="content">
+            <section class="profile">
+                <img src="./vendor/image/profile__avatar.png" alt="аватар профиля" class="profile__avatar">
+                <div class="profile__info">
+                    <div class="profile__edit">
+                        <h1 class="profile__username">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button" type="button"></button>
+                    </div>
+                    <p class="profile__user-description">Исследователь океана</p>
+                </div>
+                <button class="profile__add-button" type="button">
+                    <img src="./vendor/image/profile__add-button.svg" alt="кнопка добавления карточки" class="profile__add-image">
+                </button>
+            </section>
+            <section class="elements">
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">© 2020 Mesto Russia</p>
+        </footer>
+        <section class="popup popup_type_profile">
+            <div class="popup__container">
+                <button type="button" class="popup__button-close"></button>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form  name="profilePopup" class="popup__form popup__form-profile" novalidate>
+                    <input id="form-name-input" type="text" name="name" value="Имя" placeholder="Имя" 
+                    required minlength="2" maxlength="40" class="popup__field popup__field_type_name">
+                    <span  class="form-name-input-error"></span>
+                    <input id="form-description-input" type="text" name="description" value="описание" placeholder="описание" 
+                    required minlength="2" maxlength="200" class="popup__field popup__field_type_description">
+                    <span  class="form-description-input-error"></span>
+                    <button  type="submit" class="popup__button-save">Сохранить</button>
+                </form>
+            </div>
+        </section>
+        <section class="popup popup_type_cardpopup">
+            <div class="popup__container">
+                <button type="button" class="popup__button-close  popup__button-close_card-add"></button>
+                <h2 class="popup__title">Новое место</h2>
+                <form name="popup-card" class="popup__form popup__form-card" novalidate>
+                    <input type="text" id="form-place-input"  name="placeName"  placeholder="Название" 
+                     minlength="2" maxlength="30" required class="popup__field popup__field_type_place">
+                     <span class="form-place-input-error"></span>
+                    <input type="url" id="form-link-input" name="form-link-input"  placeholder="Ссылка на картинку" 
+                    required minlength="2" class="popup__field popup__field_type_imageUrl">
+                    <span class="form-link-input-error"></span>
+                    <button  type="submit" class="popup__button-save">Создать</button>
+                </form> 
+            </div>
+        </section>
+        <section class="popup popup_type_imagepopup">
+            <div class="popup__figure-container">
+                <figure class="popup__figure">
+                    <img src="#" alt="#" class = "popup__image">
+                    <figcaption class="popup__caption"></figcaption>
+                </figure>
+                <button class="popup__button-close" type="button"></button>
+            </div>
+        </section>
+    </div>
+    <template class="elements-template">
+        <div class="element card">
+          <img src="#" alt="#" class="element__image">
+          <button class="element__delete-button" type="button"></button>
+          <h3 class="element__title"></h3>
+          <button class="element__like-button" type="button"></button>
+        </div>
+      </template>
+  <script type="module" src="./pages/index.js"></script>
+</body>
+</html>
