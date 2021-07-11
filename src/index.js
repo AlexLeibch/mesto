@@ -1,11 +1,12 @@
-import Popup from '../components/Popup.js';
-import PopupWithForm from '../components/PopupWithForm.js'
-import PopupWithImage from '../components/PopupWithImage.js'
-import Section from '../components/Section.js'
-import UserInfo from '../components/UserInfo.js'
-import Card from '../components/Card.js'
-import FormValidator from '../components/FormValidator.js';
-import {classSection, initialCards, validationConfig} from '../utils/const.js'
+import './pages/index.css'
+import Popup from './components/Popup.js';
+import PopupWithForm from './components/PopupWithForm.js'
+import PopupWithImage from './components/PopupWithImage.js'
+import Section from './components/Section.js'
+import UserInfo from './components/UserInfo.js'
+import Card from './components/Card.js'
+import FormValidator from './components/FormValidator.js';
+import {classSection, initialCards, validationConfig} from './utils/const.js'
 import {
   profilePopup,
   cardPopup,
@@ -40,7 +41,7 @@ import {
   userNameSelector,
   descriptionSelector,
   classSectionSelector,
-} from '../utils/const.js'
+} from './utils/const.js'
 
 const popupWithImage = new PopupWithImage(imagePopupSelector, imageTagSelector, imageTitleSelector)
 popupWithImage.setEventListeners()
@@ -114,5 +115,3 @@ function submitAddCard() {
   cardPopupEdit.close()
 
 }
-
-
