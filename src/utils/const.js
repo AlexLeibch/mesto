@@ -1,5 +1,6 @@
 export { classSection, initialCards, validationConfig };
 const classSection = document.querySelector('.elements')
+const classSectionSelector = '.elements'
 const profilePopup = document.querySelector('.popup_type_profile') // редактировать профиль попапа
 const profilePopupSelector = '.popup_type_profile'
 const cardPopup = document.querySelector('.popup_type_cardpopup'); // редактировать попап карточек
@@ -13,7 +14,9 @@ const closeButtonCard =  cardPopup.querySelector('.popup__button-close'); // к�
 const closeButtonImage = imagePopup.querySelector('.popup__button-close'); // кнопка закрытия фотографии
 const closeButtonPopUp = document.querySelector('.popup__button-close')
 const username = document.querySelector('.profile__username'); // имя профиля в профиле
+const userNameSelector = '.profile__username'
 const description = document.querySelector('.profile__user-description'); // описание профиля на странице
+const descriptionSelector = '.profile__user-description'
 const formElementProfile = profilePopup.querySelector('.popup__form-profile'); // форма ввода инфы в профиле
 const formElementCard = cardPopup.querySelector('.popup__form-card') // форма для вставки фотографии
 const nameInput = document.querySelector('.popup__field_type_name'); // поле для ввода имени
@@ -63,6 +66,9 @@ export {
   imageTagSelector,
   imageTitleSelector,
   cardPopupSelector,
+  userNameSelector,
+  descriptionSelector,
+  classSectionSelector,
 }
 
  const initialCards = [
