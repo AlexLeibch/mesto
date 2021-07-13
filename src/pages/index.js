@@ -107,10 +107,10 @@ editPopupButton.addEventListener('click', () => {
 })
 
 function submitAddCard() {
-  const inputTitle = inputCardPlace.value
-  const inputLink = inputCardUrl.value
+  const inputTitle = cardPopupSelector[name.placeName]
+  const inputLink = cardPopupSelector[name.form-link-input]
   const cardItem = ({name: inputTitle, link: inputLink})
-  cardSection.prepend(createCard(cardItem))
+  cardList.setItem(cardItem)
   formElementCard.reset()
   cardPopupEdit.close()
 
