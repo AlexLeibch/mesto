@@ -1,11 +1,9 @@
-import {classSection, initialCards, validationConfig} from '../utils/const.js'
-const popupImage = document.querySelector('.popup_type_imagepopup')
-const imageTag = popupImage.querySelector('.popup__image');
-const imageTitle = popupImage.querySelector('.popup__caption');
-
 export default class Card {
     constructor(data, cardSelector, {handleCardClick}) {
         this._name = data.name
+        
+        
+        
         this._link = data.link
         this._cardSelector = cardSelector
         this._handleCardClick = handleCardClick
@@ -31,11 +29,11 @@ export default class Card {
 
     generateCard() {
         this._element = this._getTemplate();
-        this._setEventListeners()
-        this._element.querySelector('.element__image').src = this._link
-        this._element.querySelector('.element__image').alt = this._name
+        this._imgElement = this._element.querySelector('.element__image')
+        this._imgElement.src = this._link
+        this._imgElement.alt = this._name
         this._element.querySelector('.element__title').textContent = this._name
-
+        this._setEventListeners()
         return this._element
     }
 
@@ -54,15 +52,6 @@ export default class Card {
             this._handleCardClick(this._name, this._link)
         })
     }
-
-    _openImage() {
-        this._openPopup(popupImage)
-        imageTag.src = this._link
-        imageTag.alt = this._name
-        imageTitle.textContent = this._name
-    }
-
-
 }
 
 

@@ -1,4 +1,4 @@
-import './pages/index.css'
+import './index.css'
 import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js'
 import PopupWithImage from '../components/PopupWithImage.js'
@@ -94,6 +94,7 @@ function submitProfileForm() {
 addPopupButton.addEventListener('click', () => {
   cardPopupEdit.open()
   cardValidation.disabledButton(cardButtonSave)
+  cardValidation.clearInputError(cardButtonSave)
 })
 
 const userInfo = new UserInfo({userName: userNameSelector, userDescription: descriptionSelector})
@@ -110,7 +111,6 @@ function submitAddCard() {
   const inputLink = inputCardUrl.value
   const cardItem = ({name: inputTitle, link: inputLink})
   cardSection.prepend(createCard(cardItem))
-  
   formElementCard.reset()
   cardPopupEdit.close()
 
