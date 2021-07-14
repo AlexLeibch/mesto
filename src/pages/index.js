@@ -62,6 +62,7 @@ cardValidation.enableValidation()
 
 
 function createCard(item) {
+
   const newCard = new Card(item, cardSelector, {
     handleCardClick: (link, title) => {
       popupWithImage.open(link, title)
@@ -72,7 +73,7 @@ function createCard(item) {
 }
 
 const cardList = new Section({
-  items: initialCards,
+  items: initialCards.reverse(),
   renderer: (item) => {
     const newCard = createCard(item)
     cardList.setItem(newCard)
@@ -106,12 +107,12 @@ editPopupButton.addEventListener('click', () => {
   profileValidation.clearInputError(cardButtonSave)
 })
 
-function submitAddCard() {
-  const inputTitle = cardPopupSelector[name.placeName]
-  const inputLink = cardPopupSelector[name.form-link-input]
+function submitAddCard(inputValues) {
+  const inputTitle = inputValues.placeName
+  const inputLink = inputValues['form-link-input']
   const cardItem = ({name: inputTitle, link: inputLink})
-  cardList.setItem(cardItem)
+  const card = createCard(cardItem)
+  cardList.setItem(card)
   formElementCard.reset()
   cardPopupEdit.close()
-
 }
