@@ -1,9 +1,6 @@
-export default class Card {
+export default class Card { 
     constructor(data, cardSelector, {handleCardClick}) {
-        this._name = data.name
-        
-        
-        
+        this._name = data.name        
         this._link = data.link
         this._cardSelector = cardSelector
         this._handleCardClick = handleCardClick
@@ -43,12 +40,12 @@ export default class Card {
         this._element.querySelector('.element__like-button').addEventListener('click', () => {
             this._like()
         })
-
-        this._element.querySelector('.element__delete-button').addEventListener('click', () => {
+        const deleteButton = this._element.querySelector('.element__delete-button')
+        deleteButton.addEventListener('click', () => {
             this._deleteCard()
         })
 
-        this._element.querySelector('.element__image').addEventListener('click', () => {
+        this._imgElement.addEventListener('click', () => {
             this._handleCardClick(this._name, this._link)
         })
     }

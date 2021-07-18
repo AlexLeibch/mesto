@@ -82,13 +82,8 @@ const cardList = new Section({
 cardList.renderedItems()
 
 
-function submitProfileForm() {
-  const info = {
-    user: nameInput.value,
-    description: jobInput.value
-  }
-
-  userInfo.setUserInfo(info)
+function submitProfileForm(values) {
+  userInfo.setUserInfo(values)
   profilePopupEdit.close()
 }
 
@@ -110,7 +105,7 @@ editPopupButton.addEventListener('click', () => {
 function submitAddCard(inputValues) {
   const inputTitle = inputValues.placeName
   const inputLink = inputValues['form-link-input']
-  const cardItem = ({name: inputTitle, link: inputLink})
+  const cardItem = {name: inputTitle, link: inputLink}
   const card = createCard(cardItem)
   cardList.setItem(card)
   formElementCard.reset()
