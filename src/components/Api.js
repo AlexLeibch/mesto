@@ -32,13 +32,13 @@
                  authorization: this._token,
                  'Content-type': 'application/json'
              },
-             body: JSON.stringify {
+             body: JSON.stringify ({
                  user: user,
                  about: description,                 
              })
              .then(response => response.ok
                 ? response.json()
                 : Promise.reject(`Произошла ошибка: ${response.status}`))
-         }
+         })
      }
  }
