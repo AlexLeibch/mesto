@@ -4,6 +4,7 @@ export default class PopupWithForm extends Popup {
     constructor(popupSelector, submitForm) {
         super(popupSelector)
         this._submitForm = submitForm
+        this
     }
 
     _getInputValues() {
@@ -26,5 +27,13 @@ export default class PopupWithForm extends Popup {
         super.close()
         this._popupSelector.querySelector('.popup__form').reset()
         
+    }
+
+    renderLoading(isLoading, loadingMessage='Сохранение...') {
+        if(isLoading) {
+            this._popupSubmitButton.textContent = loadingMessage
+        } else {
+            this._popupSubmitButton.textContent = this._defaultSubmitButtonText
+        }
     }
 }
