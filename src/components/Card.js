@@ -25,7 +25,7 @@ export default class Card {
         this._element.querySelector('.element__like-button').classList.toggle('element__like-button_active')
     }
 
-    _deleteCard() {
+    deleteCard() {
         this._element.querySelector('.element__delete-button').closest('.card').remove()
 
     }
@@ -55,7 +55,7 @@ export default class Card {
         })
         const deleteButton = this._element.querySelector('.element__delete-button')
         deleteButton.addEventListener('click', () => {
-            this._deleteCard()
+            this.deleteCard()
         })
 
         this._imgElement.addEventListener('click', () => {

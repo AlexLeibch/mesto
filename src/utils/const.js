@@ -35,6 +35,17 @@ const popup = document.querySelector('.popup')
 const clearProfile = document.forms['popup-card']
 
 
+const deletePopupSelector = '.popup_type_deleteimage'
+const userId = '6a8d306b-88c2-4559-b9fb-ed6535e42e98'
+const popupAvatar = document.querySelector('.popup_type_avatarpopup')
+const popupAvatarSelector = '.popup_type_avatarpopup'
+const profileAvatar = document.querySelector('.profile__avatar')
+const formAvatar = popupAvatar.document.querySelector('.popup__form-avatar')
+const profileAvatarInput = popupAvatar.querySelector('.popup__field_avatar_imageUrl')
+const updateAvatarButton = document.querySelector('.profile__avatar-edit')
+const updateAvatarButtonSelector = '.profile__avatar-edit'
+
+
 export {
   profilePopup,
   cardPopup,
@@ -69,6 +80,15 @@ export {
   userNameSelector,
   descriptionSelector,
   classSectionSelector,
+  deletePopupSelector,
+  userId,
+  popupAvatar,
+  popupAvatarSelector,
+  profileAvatar,
+  formAvatar,
+  profileAvatarInput,
+  updateAvatarButton,
+  updateAvatarButtonSelector,
 }
 
  const initialCards = [

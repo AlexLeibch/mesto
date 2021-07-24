@@ -4,7 +4,8 @@ export default class PopupWithForm extends Popup {
     constructor(popupSelector, submitForm) {
         super(popupSelector)
         this._submitForm = submitForm
-        this
+        this._popupSubmitButton = this._popupSelector.querySelector('.popup__button-save')
+        this._submitButtonText = this._popupSubmitButton.textContent
     }
 
     _getInputValues() {

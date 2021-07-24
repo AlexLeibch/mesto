@@ -6,6 +6,8 @@ import Section from '../components/Section.js'
 import UserInfo from '../components/UserInfo.js'
 import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js';
+import PopupWithConfirm from '../components/PopupWithConfirm.js';
+import Api from '../components/Api.js'
 import {classSection, initialCards, validationConfig} from '../utils/const.js'
 import {
   profilePopup,
@@ -41,7 +43,34 @@ import {
   userNameSelector,
   descriptionSelector,
   classSectionSelector,
+  deletePopupSelector,
+  userId,
+  popupAvatar,
+  popupAvatarSelector,
+  profileAvatar,
+  formAvatar,
+  profileAvatarInput,
+  updateAvatarButton,
+  updateAvatarButtonSelector,
 } from '../utils/const.js'
+import { data } from 'browserslist';
+
+const api = new Api({
+  adress: `https://mesto.nomoreparties.co/v1/cohort-26`,
+  headers: {
+    authorization: '6a8d306b-88c2-4559-b9fb-ed6535e42e98',
+    'Content-type': 'application/json'
+  }
+})
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+.then(([data,item]) => {
+  userInfo.setUserInfo(data)
+  cardList.renderedItems(item)
+})
+.catch((error) => {
+  console.log(`Произошла ошибка: ${error}`)
+})
 
 const popupWithImage = new PopupWithImage(imagePopupSelector, imageTagSelector, imageTitleSelector)
 popupWithImage.setEventListeners()
