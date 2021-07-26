@@ -9,7 +9,7 @@ export default class Card {
         this._countLikes = data.likes
         this._userId = userId
         this._cardId = cardId;
-        this._ownerId = data.owner._id;
+        this._ownerId = data.owner._id
     }
 
     _getTemplate() {
@@ -36,10 +36,10 @@ export default class Card {
         this._imgElement.src = this._link
         this._imgElement.alt = this._name
         this._element.querySelector('.element__title').textContent = this._name
-        this._handleLike = this._element.document.querySelector('.element__like-button')
+        this._handleLike = this._element.querySelector('.element__like-button')
         this._likes = this._element.querySelector('.element__like-counter')
         this._deleteIcon = this._element.querySelector('.element__delete-button')
-        if (this._ownerId !== this._userId) {
+        if (this._ownerId === this._userId) {
             this._deleteIcon.style.display = 'none'
         }
 

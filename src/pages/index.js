@@ -52,11 +52,12 @@ import {
   profileAvatarInput,
   updateAvatarButton,
   updateAvatarButtonSelector,
+  avatarButtonSave,
 } from '../utils/const.js'
 import { data } from 'browserslist';
 
 const api = new Api({
-  adress: `https://mesto.nomoreparties.co/v1/cohort-26`,
+  address: 'https://mesto.nomoreparties.co/v1/cohort-26',
   headers: {
     authorization: '6a8d306b-88c2-4559-b9fb-ed6535e42e98',
     'Content-type': 'application/json'
@@ -75,28 +76,80 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 const popupWithImage = new PopupWithImage(imagePopupSelector, imageTagSelector, imageTitleSelector)
 popupWithImage.setEventListeners()
 
-const profilePopupEdit = new PopupWithForm(profilePopupSelector, submitProfileForm)
+const profilePopupEdit = new PopupWithForm(profilePopupSelector, (inputsValue) => {
+  profilePopupEdit.renderLoading(true)
+  api.editUserInfo(inputsValue)
+  .then(() => {
+    userInfo.setUserInfo(inputsValue)
+    profilePopupEdit.close()
+  })
+  .catch((err) => {
+    console.log(`Произошла ошибка: ${err}`)
+  })
+  .finally(() => {
+    profilePopupEdit.renderLoading(false)
+  })
+})
 profilePopupEdit.setEventListeners()
 
-const cardPopupEdit = new PopupWithForm(cardPopupSelector, submitAddCard)
+const cardPopupEdit = new PopupWithForm(cardPopupSelector, (inputsValue) => {
+  cardPopupEdit.renderLoading(true)
+  api.addCard(inputsValue.name, inputsValue.link)
+  .then(inputsValue => {
+    const newCard = createCard(inputsValue)
+    cardList.setItem(newCard)
+  })
+})
 cardPopupEdit.setEventListeners()
 
+const popupEditAvatar = new PopupWithForm(popupAvatarSelector, () => {
+  popupEditAvatar.renderLoading(true)
+  
+  api.editUserAvatar(profileAvatarInput.value)
+    .then((res) => {
+      userInfo.setUserInfo(res)
+      popupEditAvatar.close()
+  })
+    .catch((err) =>{
+      console.log(err)
+    }).finally(() => {
+        popupEditAvatar.renderLoading(false)
+  })
+})
+popupEditAvatar.setEventListeners()
+
+const popupDeleteConfirm = new PopupWithConfirm(deletePopupSelector, (evt, card) => {
+  deleteConfirm(evt, card)
+})
+popupDeleteConfirm.setEventListeners()
 
 const profileValidation = new FormValidator(validationConfig, formElementProfile)
 const cardValidation = new FormValidator(validationConfig, formElementCard)
+const avatarValidation = new FormValidator(validationConfig, formAvatar)
 
 profileValidation.enableValidation()
 cardValidation.enableValidation()
+avatarValidation.enableValidation()
 
 
 
 function createCard(item) {
-
   const newCard = new Card(item, cardSelector, {
     handleCardClick: (link, title) => {
       popupWithImage.open(link, title)
+    }, likeCardClick: () => {
+      const likedCard = newCard.likedCard();
+      const resultApi = likedCard ? api.dislikeCard(newCard.getIdCard()) : api.likeCard(newCard.getIdCard());
+      resultApi.then(data => {
+        newCard.setLikes(data.likes);
+        newCard.renderLikes()
+      }).catch((err) => {
+        console.log(err)
+      })
+    }, handleCardDelete: () => {
+      popupDeleteConfirm.open(newCard)
     }
-  })
+  }, userId, item._id)
   const newUserCard = newCard.generateCard();
   return newUserCard;
 }
@@ -131,6 +184,12 @@ editPopupButton.addEventListener('click', () => {
   profileValidation.clearInputError(cardButtonSave)
 })
 
+
+updateAvatarButton.addEventListener('click', () => {
+  popupEditAvatar.open()
+  avatarValidation.clearInputError(avatarButtonSave)
+})
+
 function submitAddCard(inputValues) {
   const inputTitle = inputValues.placeName
   const inputLink = inputValues['form-link-input']
@@ -139,4 +198,17 @@ function submitAddCard(inputValues) {
   cardList.setItem(card)
   formElementCard.reset()
   cardPopupEdit.close()
+}
+
+
+const deleteConfirm = (evt, newCard) => {
+  evt.preventDefault();
+  api.removeCard(newCard.getIdCard())
+    .then(res => {
+      newCard.removeCard()
+      popUpDeleteConfirm.close()
+    })
+    .catch((err) => {
+    console.log(err);
+  });
 }

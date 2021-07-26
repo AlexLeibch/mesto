@@ -3,7 +3,7 @@ export default class PopupWithConfirm extends Popup {
     constructor(popupSelector, submitForm) {
         super(popupSelector)
         this._submitForm = submitForm   
-        this._popupSubmitButton = this._popupSubmitButton.querySelector('.popup__button-save')
+        this._popupSubmitButton = this._popupSelector.querySelector('.popup__button-save')
         this._submitButtonText = this._popupSubmitButton.textContent
     }
     
