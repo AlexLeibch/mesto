@@ -78,7 +78,7 @@ popupWithImage.setEventListeners()
 
 const profilePopupEdit = new PopupWithForm(profilePopupSelector, (inputsValue) => {
   profilePopupEdit.renderLoading(true)
-  api.editUserInfo(inputsValue)
+  api.editUserInfo(inputsValue.name, inputsValue.description)
   .then(() => {
     userInfo.setUserInfo(inputsValue)
     profilePopupEdit.close()
