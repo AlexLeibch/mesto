@@ -40,7 +40,6 @@
       }
     
       editUserAvatar(url) {
-        console.log(url)
         return fetch(`${this._address}/users/me/avatar`, {
           method: 'PATCH',
           headers: this._headers,

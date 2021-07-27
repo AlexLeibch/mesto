@@ -9,7 +9,9 @@ export default class Card {
         this._countLikes = item.likes
         this._userId = userId
         this._cardId = cardId
-        this._ownerID = item.owner._id;
+        this._ownerId = item.owner._id;
+  
+        
     }
 
     _getTemplate() {
@@ -39,7 +41,7 @@ export default class Card {
         this._handleLike = this._element.querySelector('.element__like-button')
         this._likes = this._element.querySelector('.element__like-counter')
         this._deleteIcon = this._element.querySelector('.element__delete-button')
-        if (this._ownerId === this._userId) {
+        if (this._ownerId !== this._userId) {
             this._deleteIcon.style.display = 'none'
         }
 
@@ -50,12 +52,13 @@ export default class Card {
     }
 
     _setEventListeners() {
-        this._element.querySelector('.element__like-button').addEventListener('click', () => {
+        this._handleLike.addEventListener('click', () => {
+            this._likeCardClick()
             this._like()
         })
         const deleteButton = this._element.querySelector('.element__delete-button')
         deleteButton.addEventListener('click', () => {
-            this.deleteCard()
+            this._handleCardDelete()
         })
 
         this._imgElement.addEventListener('click', () => {
@@ -69,7 +72,7 @@ export default class Card {
 
     renderLikes() {
         this._likes.textContent = this._countLikes.length
-        this.showLike(this._userId)
+        this.showLikes(this._userId)
     }
 
     getIdCard() {

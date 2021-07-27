@@ -8,7 +8,7 @@ import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js';
 import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import Api from '../components/Api.js'
-import {classSection, initialCards, validationConfig} from '../utils/const.js'
+import {classSection, validationConfig} from '../utils/const.js'
 import {
   profilePopup,
   cardPopup,
@@ -53,6 +53,7 @@ import {
   updateAvatarButton,
   updateAvatarButtonSelector,
   avatarButtonSave,
+  profileSelector
 } from '../utils/const.js'
 import { data } from 'browserslist';
 
@@ -65,9 +66,10 @@ const api = new Api({
 })
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-.then(([data,item]) => {
+.then(([data,items]) => {
+  const reverseItems = items.reverse()
   userInfo.setUserInfo(data)
-  cardList.renderedItems(item)
+  cardList.renderedItems(reverseItems)
 })
 .catch((error) => {
   console.log(`Произошла ошибка: ${error}`)
@@ -94,10 +96,14 @@ profilePopupEdit.setEventListeners()
 
 const cardPopupEdit = new PopupWithForm(cardPopupSelector, (inputsValue) => {
   cardPopupEdit.renderLoading(true)
-  api.addCard(inputsValue.name, inputsValue.link)
+  api.addCard(inputsValue.placeName, inputsValue['form-link-input'])
   .then(inputsValue => {
     const newCard = createCard(inputsValue)
     cardList.setItem(newCard)
+
+  })
+  .finally(() => {
+    cardPopupEdit.renderLoading(false)
   })
 })
 cardPopupEdit.setEventListeners()
@@ -149,25 +155,23 @@ function createCard(item) {
     }, handleCardDelete: () => {
       popupDeleteConfirm.open(newCard)
     }
-  }, udcdserId, item._id)
+  }, userId, item._id)
   const newUserCard = newCard.generateCard();
   return newUserCard;
 }
 
 const cardList = new Section({
-  items: initialCards.reverse(),
-  renderer: (item) => {
-    const newCard = createCard(item)
+  renderer: (cardItem) => {
+    const newCard= createCard(cardItem)
     cardList.setItem(newCard)
   }
 }, classSectionSelector)
-cardList.renderedItems()
 
 
-function submitProfileForm(values) {
-  userInfo.setUserInfo(values)
-  profilePopupEdit.close()
-}
+// function submitProfileForm(values) {
+//   userInfo.setUserInfo(values)
+//   profilePopupEdit.close()
+// }
 
 addPopupButton.addEventListener('click', () => {
   cardPopupEdit.open()
@@ -175,12 +179,12 @@ addPopupButton.addEventListener('click', () => {
   cardValidation.clearInputError(cardButtonSave)
 })
 
-const userInfo = new UserInfo({userName: userNameSelector, userDescription: descriptionSelector})
+const userInfo = new UserInfo(profileSelector)
 editPopupButton.addEventListener('click', () => {
   profilePopupEdit.open();
   const currentInfo = userInfo.getUserInfo()
   nameInput.value = currentInfo.name
-  jobInput.value = currentInfo.description
+  jobInput.value = currentInfo.about
   profileValidation.clearInputError(cardButtonSave)
 })
 
@@ -190,15 +194,15 @@ updateAvatarButton.addEventListener('click', () => {
   avatarValidation.clearInputError(avatarButtonSave)
 })
 
-function submitAddCard(inputValues) {
-  const inputTitle = inputValues.placeName
-  const inputLink = inputValues['form-link-input']
-  const cardItem = {name: inputTitle, link: inputLink}
-  const card = createCard(cardItem)
-  cardList.setItem(card)
-  formElementCard.reset()
-  cardPopupEdit.close()
-}
+// function submitAddCard(inputValues) {
+//   const inputTitle = inputValues.placeName
+//   const inputLink = inputValues['form-link-input']
+//   const cardItem = {name: inputTitle, link: inputLink}
+//   const card = createCard(cardItem)
+//   cardList.setItem(card)
+//   formElementCard.reset()
+//   cardPopupEdit.close()
+// }
 
 
 const deleteConfirm = (evt, newCard) => {
@@ -206,7 +210,7 @@ const deleteConfirm = (evt, newCard) => {
   api.removeCard(newCard.getIdCard())
     .then(res => {
       newCard.removeCard()
-      popUpDeleteConfirm.close()
+      popupDeleteConfirm.close()
     })
     .catch((err) => {
     console.log(err);
