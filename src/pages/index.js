@@ -149,7 +149,7 @@ function createCard(item) {
     }, handleCardDelete: () => {
       popupDeleteConfirm.open(newCard)
     }
-  }, userId, item._id)
+  }, udcdserId, item._id)
   const newUserCard = newCard.generateCard();
   return newUserCard;
 }
