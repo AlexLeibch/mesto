@@ -99,6 +99,7 @@ const popupAddCard = new PopupWithForm(cardPopupSelector, (inputsValue) => {
   .then(inputsValue => {
     const newCard = createCard(inputsValue)
     cardList.setItem(newCard)
+    popupAddCard.close()
 
   })
   .finally(() => {
