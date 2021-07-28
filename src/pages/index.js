@@ -55,7 +55,6 @@ import {
   avatarButtonSave,
   profileSelector
 } from '../utils/const.js'
-import { data } from 'browserslist';
 
 const api = new Api({
   address: 'https://mesto.nomoreparties.co/v1/cohort-26',
@@ -78,24 +77,24 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 const popupWithImage = new PopupWithImage(imagePopupSelector, imageTagSelector, imageTitleSelector)
 popupWithImage.setEventListeners()
 
-const profilePopupEdit = new PopupWithForm(profilePopupSelector, (inputsValue) => {
-  profilePopupEdit.renderLoading(true)
+const popupEditProfile = new PopupWithForm(profilePopupSelector, (inputsValue) => {
+  popupEditProfile.renderLoading(true)
   api.editUserInfo(inputsValue.name, inputsValue.description)
   .then(() => {
     userInfo.setUserInfo(inputsValue)
-    profilePopupEdit.close()
+    popupEditProfile.close()
   })
   .catch((err) => {
     console.log(`Произошла ошибка: ${err}`)
   })
   .finally(() => {
-    profilePopupEdit.renderLoading(false)
+    popupEditProfile.renderLoading(false)
   })
 })
-profilePopupEdit.setEventListeners()
+popupEditProfile.setEventListeners()
 
-const cardPopupEdit = new PopupWithForm(cardPopupSelector, (inputsValue) => {
-  cardPopupEdit.renderLoading(true)
+const popupAddCard = new PopupWithForm(cardPopupSelector, (inputsValue) => {
+  popupAddCard.renderLoading(true)
   api.addCard(inputsValue.placeName, inputsValue['form-link-input'])
   .then(inputsValue => {
     const newCard = createCard(inputsValue)
@@ -103,10 +102,10 @@ const cardPopupEdit = new PopupWithForm(cardPopupSelector, (inputsValue) => {
 
   })
   .finally(() => {
-    cardPopupEdit.renderLoading(false)
+    popupAddCard.renderLoading(false)
   })
 })
-cardPopupEdit.setEventListeners()
+popupAddCard.setEventListeners()
 
 const popupEditAvatar = new PopupWithForm(popupAvatarSelector, () => {
   popupEditAvatar.renderLoading(true)
@@ -167,21 +166,15 @@ const cardList = new Section({
   }
 }, classSectionSelector)
 
-
-// function submitProfileForm(values) {
-//   userInfo.setUserInfo(values)
-//   profilePopupEdit.close()
-// }
-
 addPopupButton.addEventListener('click', () => {
-  cardPopupEdit.open()
+  popupAddCard.open()
   cardValidation.disabledButton(cardButtonSave)
   cardValidation.clearInputError(cardButtonSave)
 })
 
 const userInfo = new UserInfo(profileSelector)
 editPopupButton.addEventListener('click', () => {
-  profilePopupEdit.open();
+  popupEditProfile.open();
   const currentInfo = userInfo.getUserInfo()
   nameInput.value = currentInfo.name
   jobInput.value = currentInfo.about
@@ -192,18 +185,8 @@ editPopupButton.addEventListener('click', () => {
 updateAvatarButton.addEventListener('click', () => {
   popupEditAvatar.open()
   avatarValidation.clearInputError(avatarButtonSave)
+  avatarValidation.disabledButton(avatarButtonSave)
 })
-
-// function submitAddCard(inputValues) {
-//   const inputTitle = inputValues.placeName
-//   const inputLink = inputValues['form-link-input']
-//   const cardItem = {name: inputTitle, link: inputLink}
-//   const card = createCard(cardItem)
-//   cardList.setItem(card)
-//   formElementCard.reset()
-//   cardPopupEdit.close()
-// }
-
 
 const deleteConfirm = (evt, newCard) => {
   evt.preventDefault();

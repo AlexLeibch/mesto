@@ -72,7 +72,7 @@ export default class Card {
 
     renderLikes() {
         this._likes.textContent = this._countLikes.length
-        this.showLikes(this._userId)
+        this._showLikes(this._userId)
     }
 
     getIdCard() {
@@ -85,7 +85,7 @@ export default class Card {
         })
     }
 
-    showLikes() {
+    _showLikes() {
         if (this.likedCard(this._userId)) {
             this._handleLike.classList.add('element__like-button_active')
         } else {
